@@ -1,0 +1,42 @@
+flowchart TD
+    subgraph ClientAndKeepers["Client & Autonomous Keepers"]
+        Trader["Algorithmic Trading Bot<br/>(KriptoK-Sentinel)"]
+        Crank["Settlement Crank Keeper"]
+    end
+
+    subgraph OracleNetwork["Oracle Layer"]
+        PythOracle["Pyth Price Feed<br/>(SOL/USD Feed Account)"]
+    end
+
+    subgraph SolanaOnChain["Solana On-Chain: KriptoK Anchor Protocol"]
+        ConfigAccount["Global Config PDA<br/>seeds=['config']<br/>- Admin Pubkey<br/>- Fee Basis Points<br/>- Min/Max Stake"]
+        RoundPDA["League Round PDA<br/>seeds=['round', round_id]<br/>- Round ID & Status<br/>- Start/Lock/End Timestamps<br/>- Strike & Resolution Prices<br/>- Bull / Bear Pool Vault Totals"]
+        UserPositionPDA["User Position PDA<br/>seeds=['position', round_id, trader]<br/>- Direction (Bull/Bear)<br/>- Amount Staked<br/>- Claimed Flag"]
+        RoundVaultPDA["Round Vault ATA / Escrow<br/>seeds=['vault', round_id]<br/>- Holds Staked USDC Liquidity"]
+    end
+
+    subgraph SPLToken["SPL Token Engine"]
+        UserATA["Trader USDC ATA"]
+        TreasuryATA["Protocol Fee Treasury ATA"]
+    end
+
+    %% Flow Steps
+    Trader -->|"1. Ingest Price & Signal"| PythOracle
+    Trader -->|"2. enter_round(Bull/Bear, Stake)"| UserPositionPDA
+    Trader -->|"CPI: Transfer Stake"| RoundVaultPDA
+    UserATA -.->|"Debit USDC"| RoundVaultPDA
+
+    Crank -->|"3. lock_round()"| RoundPDA
+    Crank -->|"4. settle_round(pyth_feed)"| RoundPDA
+    PythOracle -.->|"Validate Timestamp & Conf"| RoundPDA
+
+    RoundPDA -->|"5. claim_winnings()"| UserPositionPDA
+    RoundVaultPDA -.->|"Credit Principal + Pro-Rata Yield"| UserATA
+    RoundVaultPDA -.->|"Protocol Fee Deductions"| TreasuryATA
+
+    classDef pda fill:#1e1e2f,stroke:#7c3aed,stroke-width:2px,color:#fff;
+    classDef client fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#fff;
+    classDef oracle fill:#022c22,stroke:#10b981,stroke-width:2px,color:#fff;
+    class RoundPDA,ConfigAccount,UserPositionPDA,RoundVaultPDA pda;
+    class Trader,Crank client;
+    class PythOracle oracle;

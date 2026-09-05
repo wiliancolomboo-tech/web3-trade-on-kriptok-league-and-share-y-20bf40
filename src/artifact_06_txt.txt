@@ -1,0 +1,15 @@
++------------------------------------+-------------------------------------------+-------------------------------------------------------------+
+| Threat Vector                      | Severity                                  | Production Mitigation Mechanism                             |
++------------------------------------+-------------------------------------------+-------------------------------------------------------------+
+| Oracle Front-Running               | Critical                                  | Lock window enforces zero new entries after lock_time;      |
+|                                    |                                           | Pyth staleness check restricts resolution to < 30s.         |
+| Pyth Confidence Exploit            | High                                      | Validates (conf * 10,000 / price) <= 50 bps;                |
+|                                    |                                           | wide/uncertain spreads abort settlement to prevent bad data.|
+| PDA Seed Impersonation             | Critical                                  | Canonical seeds: [b"position", round_id, trader.key()];     |
+|                                    |                                           | Prevents malicious third-party claims or fund theft.        |
+| Reentrancy / Double Claiming       | Critical                                  | Checks-Effects-Interactions pattern:                        |
+|                                    |                                           | position.claimed = true BEFORE CPI token transfer.          |
+| Round Drain / Overdrawn Pool       | High                                      | Integer math (u128) checks prevents overflow;               |
+|                                    |                                           | Winnings strictly proportional to losing pool balance.      |
+| Stale Token Accounts               | Medium                                    | Mint & owner constraints strictly validated on all ATAs.    |
++------------------------------------+-------------------------------------------+-------------------------------------------------------------+

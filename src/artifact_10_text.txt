@@ -1,0 +1,7 @@
+KriptoK League Core Protocol & Round Lifecycle
+    ✔ 1. Initializes global protocol configuration with 2.5% fee (481ms)
+    ✔ 2. Initializes Round #101 with sequential windows (412ms)
+    ✔ 3. Accepts Bull and Bear positions into escrow vault (890ms)
+    ✔ 4. Rejects position entry when below minimum stake (150ms)
+
+  4 passing (1.93s)

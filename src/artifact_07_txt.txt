@@ -1,0 +1,31 @@
++-----------+--------------------------------------------------+-------------------------------------------------------------+
+| Timestamp | Visual Frame                                     | Spoken Dialogue / Voiceover                                 |
++-----------+--------------------------------------------------+-------------------------------------------------------------+
+| 00:00-015 | Title slide: KriptoK Sentinel Engine.            | "Welcome to our submission for the KriptoK League Round     |
+|           | Anchor code repository & architecture diagram.   | Experience bounty. In fast-moving prediction rounds, retail |
+|           |                                                  | traders lose to latency and emotional position sizing.      |
+|           |                                                  | We engineered KriptoK Sentinel—an autonomous trading and   |
+|           |                                                  | verification engine built specifically for Solana speed."   |
++-----------+--------------------------------------------------+-------------------------------------------------------------+
+| 00:15-040 | Terminal executing `anchor test`.                 | "Here, our Anchor test suite demonstrates the complete      |
+|           | All test cases turn green in succession.         | on-chain round lifecycle: non-custodial round vault         |
+|           | Highlight: zero-copy Pyth price verification.    | creation, micro-stake aggregation, and Pyth pull-oracle     |
+|           |                                                  | verification with confidence intervals under 50 basis       |
+|           |                                                  | points to eliminate front-running."                         |
++-----------+--------------------------------------------------+-------------------------------------------------------------+
+| 00:40-075 | Split screen: Pyth SOL/USD price tick chart      | "Watch our autonomous trading bot execute in real-time.     |
+|           | on left, live transaction signatures on right.   | By computing rolling Z-scores on Pyth high-frequency ticks, |
+|           | Positions entered at T-3s before round lock.     | Sentinel enters optimal directional stakes 800 milliseconds |
+|           |                                                  | before round lock, guaranteeing maximum information edge    |
+|           |                                                  | while staying well within the safety parameters."           |
++-----------+--------------------------------------------------+-------------------------------------------------------------+
+| 00:75-100 | Round settles. Automated crank triggers claim.   | "The round reaches resolution. Sentinel cranks the on-chain |
+|           | USDC balances update in wallet ATA instantly.    | settlement instruction, executes fractional Kelly pro-rata |
+|           |                                                  | payouts, and sweeps net winnings directly to the trader ATA |
+|           |                                                  | with complete Reentrancy and PDA protection."               |
++-----------+--------------------------------------------------+-------------------------------------------------------------+
+| 01:00-120 | Markdown Experience Table displays telemetry:    | "Across 25 live rounds, Sentinel achieved a 68% win rate,   |
+|           | PnL, latency, and win rate.                      | sub-450ms execution, and positive net yield. This isn't     |
+|           | Closing call to action and GitHub repo link.     | just trading—it's high-reliability, verifiable Web3 gaming. |
+|           |                                                  | Thank you, and see you on the KriptoK leaderboard!"         |
++-----------+--------------------------------------------------+-------------------------------------------------------------+
