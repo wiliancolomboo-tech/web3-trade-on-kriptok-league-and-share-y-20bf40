@@ -1,0 +1,9 @@
+{
+  "trader": "7xKX...3LpQ",
+  "roundIndex": 1,
+  "direction": "Long",
+  "stakeAmount": 500000000,
+  "payoutAmount": 950000000,
+  "netPnl": 450000000,
+  "roiBps": 9000
+}

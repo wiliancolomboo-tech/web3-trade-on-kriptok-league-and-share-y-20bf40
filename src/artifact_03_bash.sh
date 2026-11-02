@@ -1,0 +1,1 @@
+anchor init kriptok_syndicate --template multiple

@@ -1,0 +1,16 @@
+[programs.localnet]
+kriptok_league_proxy = "KrpTk11111111111111111111111111111111111111"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "Localnet"
+wallet = "~/.config/solana/id.json"
+
+[test.validator]
+url = "https://api.mainnet-beta.solana.com"
+
+# Pyth Solana Receiver on Mainnet
+[[test.validator.clone]]
+address = "rec5EKMGg6MxZYaMdyBfgwp4d5rCZpwdngxURGQBLMr"

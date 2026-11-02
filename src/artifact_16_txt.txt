@@ -1,0 +1,5 @@
+00:00 - 00:20 | Introduction & Problem Space
+00:20 - 00:45 | Placing Trades & Micro-Round Mechanics
+00:45 - 01:15 | Automated Keeper Lock & Pyth Resolution
+01:15 - 01:40 | Settling, Claiming & Telemetry
+01:40 - 02:00 | Conclusion & Why This Solution Wins 1st Place

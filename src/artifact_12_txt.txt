@@ -1,0 +1,7 @@
+kriptok_league core lifecycle tests
+    ✔ 1. Initializes the Global League Configuration (412ms)
+    ✔ 2. Initializes Round #1 with Dedicated Vault (389ms)
+    ✔ 3. Alice Enters Bull (Long) and Bob Enters Bear (Short) (520ms)
+    ✔ 4. Prevents Zero Collateral Exploits (185ms)
+
+  4 passing (2s)

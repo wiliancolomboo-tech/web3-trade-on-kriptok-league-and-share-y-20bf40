@@ -1,0 +1,9 @@
+[programs.localnet]
+kriptok_league = "KrpTk11111111111111111111111111111111111111"
+
+[test.validator]
+url = "https://api.mainnet-beta.solana.com"
+
+# Clone Pyth Network SOL/USD Price Feed from Mainnet
+[[test.validator.clone]]
+address = "H6ARHf6YXhGYeQfUzQNGk6rDNnLBQKrenN712K4AQJEG"

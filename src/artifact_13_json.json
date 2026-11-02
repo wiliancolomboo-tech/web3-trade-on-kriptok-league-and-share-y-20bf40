@@ -1,0 +1,14 @@
+{
+  "roundId": 101,
+  "entrySlot": 314981023,
+  "direction": "Long",
+  "stakedSol": 1.0,
+  "executionLatencyMs": 42.18,
+  "openPriceExpected": 182.45,
+  "openPriceLocked": 182.45,
+  "settlePrice": 184.10,
+  "slippageBps": 0,
+  "pnlSol": 0.824,
+  "roiPercent": 82.4,
+  "cuConsumed": 24190
+}

@@ -1,7 +1,10 @@
-KriptoK League Core Protocol & Round Lifecycle
-    ✔ 1. Initializes global protocol configuration with 2.5% fee (481ms)
-    ✔ 2. Initializes Round #101 with sequential windows (412ms)
-    ✔ 3. Accepts Bull and Bear positions into escrow vault (890ms)
-    ✔ 4. Rejects position entry when below minimum stake (150ms)
-
-  4 passing (1.93s)
+[Keeper Active] Monitoring Round PDA: 8JkL2...xQ9
+[Trade Entered] Direction: {"long":{}} | Tx: 4uWp...9K2z (CU: 41,280)
+[Trade Entered] Direction: {"short":{}} | Tx: 2vEq...7M1a (CU: 41,310)
+[Trigger] Reached Start Time (1710000000). Executing lock_round...
+[Pyth Guard] Price Verified: $142.85 | Conf: 0.04% | Status: OK
+[Round Locked] Tx Signature: 5zLp...89Xq (CU: 31,795)
+[Trigger] Reached End Time (1710000060). Executing settle_round...
+[Round Settled] Tx Signature: 3kMn...11Vw (CU: 52,080)
+[Round Outcome] State: SettledLongWins | Net Pool: 190,000,000 USDC | Protocol Rake: 10,000,000 USDC
+[Trade Claimed] Winner payout disbursed successfully!

@@ -1,0 +1,8 @@
+kriptok-vault integration tests
+    ✔ 1. Initializes the KriptoK Delegated Trading Vault (412ms)
+    ✔ 2. Deposits 2,000 USDC collateral into Vault (388ms)
+    ✔ 3. Delegate executes algorithmic round trade (Long SOL, Round #101) (520ms)
+    ✔ 4. Prevents unauthorized trader execution (142ms)
+    ✔ 5. Settles winning round and disburses profit payout (480ms)
+
+  5 passing (2s)

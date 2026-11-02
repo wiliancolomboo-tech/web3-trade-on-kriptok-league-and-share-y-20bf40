@@ -1,0 +1,8 @@
+{
+  "rpcEndpoint": "https://api.devnet.solana.com",
+  "keypairPath": "./devnet-bot-keypair.json",
+  "programId": "KrpK111111111111111111111111111111111111111",
+  "minTradeAmount": 10000000,
+  "directionBias": "MomentumFollower",
+  "collateralMint": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU"
+}

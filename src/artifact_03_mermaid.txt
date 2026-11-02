@@ -1,0 +1,64 @@
+flowchart TD
+    subgraph ClientLayer["Client & Autonomous Keeper Layer"]
+        UI["Web3 UI Client"]
+        Keeper["Autonomous Keeper Bot"]
+        Trader["Competitive Trader Wallet"]
+    end
+
+    subgraph ProgramBoundary["KriptoK League Solana Program (Anchor Engine)"]
+        subgraph StateManagement["State & PDA Registry"]
+            GlobalState["Global League PDA\n['league', admin_pubkey]"]
+            RoundState["Round PDA\n['round', league_key, round_id]"]
+            UserPos["User Position PDA\n['position', round_pubkey, user_pubkey]"]
+            VaultPDA["Escrow Vault PDA (SPL Token)\n['vault', round_pubkey]"]
+        end
+
+        subgraph InstructionProcessors["Instruction Handlers"]
+            IxInit["initialize_round()"]
+            IxTrade["open_position(direction, amount)"]
+            IxResolve["resolve_round(pyth_price_feed)"]
+            IxClaim["claim_payout()"]
+        end
+
+        subgraph ValidationGuards["Security & Validation Checks"]
+            GuardSigner{"Signer Check\n& Anti-Spoof"}
+            GuardEpoch{"Epoch Active?\n(now < lock_timestamp)"}
+            GuardPyth{"Pyth Price Confidence\n& Staleness (< 60s)"}
+            GuardVault{"Vault Balance >=\nRequired Payout"}
+        end
+    end
+
+    subgraph ExternalPeripherals["Solana Runtime & External Oracles"]
+        PythFeed["Pyth Network SOL/USD Oracle Account"]
+        TokenProgram["SPL Token Program"]
+        NativeClock["SYSVAR Clock"]
+    end
+
+    %% Client Interactions
+    Trader -->|1. Sign & Submit Tx| IxTrade
+    Keeper -->|Execute Crank| IxInit
+    Keeper -->|Trigger Settlement| IxResolve
+    Trader -->|Redeem Winning Share| IxClaim
+
+    %% Flow through Validators
+    IxTrade --> GuardSigner
+    GuardSigner -->|Pass| GuardEpoch
+    GuardEpoch -->|Pass| TokenProgram
+
+    %% Token Transfers
+    TokenProgram -->|CPI Transfer USDC| VaultPDA
+    IxTrade -->|Initialize/Update Stake| UserPos
+    IxTrade -->|Accumulate Long/Short Pool| RoundState
+
+    %% Resolution Pipeline
+    IxResolve --> NativeClock
+    NativeClock --> GuardPyth
+    PythFeed -.->|Read Price & Conf| GuardPyth
+    GuardPyth -->|Valid Final Price| RoundState
+    RoundState -->|Transition: Closed -> Resolved| RoundState
+
+    %% Settlement Pipeline
+    IxClaim --> UserPos
+    IxClaim --> GuardVault
+    GuardVault -->|CPI Transfer Reward| TokenProgram
+    TokenProgram -->|Disburse Capital + Profit| Trader

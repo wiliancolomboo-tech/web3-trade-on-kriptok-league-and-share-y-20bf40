@@ -1,0 +1,23 @@
+{
+  "roundId": "101",
+  "entryTimestamp": 1717142400000,
+  "tradeHistory": [
+    {
+      "action": "BUY",
+      "sizeUSD": 2500,
+      "price": 154.25,
+      "slot": 1284,
+      "txSignature": "4Vn7...kQ2"
+    },
+    {
+      "action": "SELL",
+      "sizeUSD": 2500,
+      "price": 156.10,
+      "slot": 1289,
+      "txSignature": "5Am2...p9B"
+    }
+  ],
+  "finalRank": 1,
+  "roiPercent": 7.4,
+  "roundExperienceNote": "Round Execution Assessment: Sub-500ms confirmation times with zero AMM slippage. Deterministic Pyth mid-price fills eliminated mempool MEV exploitation."
+}

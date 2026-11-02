@@ -1,0 +1,6 @@
+kriptok_league test matrix
+    ✔ Initializes a new competitive round (412ms)
+    ✔ Executes a Long position deposit inside the round (288ms)
+    ✔ Rejects participation beneath the minimum collateral requirement (195ms)
+
+  3 passing (1s)

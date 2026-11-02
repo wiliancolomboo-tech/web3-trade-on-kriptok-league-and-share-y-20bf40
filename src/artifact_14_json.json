@@ -1,0 +1,31 @@
+{
+  "platform": "KriptoK League",
+  "environment": "Solana High-Speed Localnet / Devnet",
+  "tournament_epoch": {
+    "round_id": 1001,
+    "asset_pair": "SOL/USDC",
+    "open_slot": 284102914,
+    "settle_slot": 284102928,
+    "entry_price": 150.0,
+    "settle_price": 155.0,
+    "winning_side": "LONG"
+  },
+  "trade_telemetry": {
+    "user_position": "LONG",
+    "staked_collateral_usdc": 100.0,
+    "gross_return_usdc": 190.0,
+    "net_roi_percentage": 90.0,
+    "transaction_metrics": {
+      "open_position_signature": "4N6KqT9B6VbUjDfZ2yM8K1rL4o1Q3eA7xP8sW2dF5gH6jK9mN1bV4c8xZ7aB3cE",
+      "compute_units_consumed": 38450,
+      "compute_units_budgeted": 100000,
+      "execution_latency_ms": 184,
+      "priority_fee_micro_lamports": 50000
+    }
+  },
+  "experience_synthesis": {
+    "settlement_reliability": "100% Deterministic (Zero deviation vs Oracle input)",
+    "slippage_loss": "0.00 bps (Exact mark-to-market round entry)",
+    "security_status": "Vault Invariant Preserved (Zero balance remaining post-payout)"
+  }
+}

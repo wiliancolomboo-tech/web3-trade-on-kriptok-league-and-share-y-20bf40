@@ -1,0 +1,17 @@
+[BOT] Initializing KriptoK League Agent...
+[BOT] Connected to Cluster: http://127.0.0.1:8899
+[BOT] Executing entry into Round #1001...
+[BOT] Confirmed in tx: 4Z3yN...8qX9 (18.4ms latency)
+[BOT] Monitoring round #1001 resolution...
+[BOT] Round Settled! Status: SettledBullWon
+[EXPERIENCE REPORT]
+=========================================
+Round ID:            1001
+Position:            BULL
+Deposit:             100.00 USDC
+Lock Price:          $142.5020
+Close Price:         $143.1200
+Result:              WON
+Net PnL:             +96.00 USDC (After 2% Fee)
+Execution Latency:   18.4 ms
+=========================================

@@ -1,0 +1,41 @@
+========================================================================================
+TIMECODE | SCREEN ACTION / VISUAL OVERLAY           | SPOKEN NARRATIVE / SCRIPT
+========================================================================================
+00:00 -  | [Title Card: KriptoK League Production   | "Welcome to the production showcase of the
+00:15    | Protocol Architecture]. Camera cuts to   | KriptoK League engine on Solana. High-speed
+         | Solana Devnet CLI & Anchor test suite    | trading tournaments demand sub-second latency,
+         | passing with 100% green checkmarks.     | absolute oracle integrity, and trustless
+         |                                          | on-chain settlement without compute exhaustion."
+----------------------------------------------------------------------------------------
+00:15 -  | [Mermaid flowchart onscreen highlighting | "Our protocol eliminates front-running and
+00:35    | PDA Escrow and Pyth Oracle verification].| state bloat. We initialize isolated tournament
+         | Code highlight on `normalize_price` and  | rounds with fixed entry stakes in USDC, locked
+         | confidence interval bounds.              | in PDA-governed escrow vaults, provisioning
+         |                                          | participants with deterministic virtual margins."
+----------------------------------------------------------------------------------------
+00:35 -  | [Split Screen: Trader 1 (Alice) and      | "Here, Alice and Bob enter Round 1001. Watch the
+01:00    | Trader 2 (Bob) executing positions].     | CPI: real USDC is locked in the escrow vault,
+         | Terminal runs `anchor test` live:        | and virtual trading accounts are minted.
+         | Alice opens 10x Long on SOL/USD;         | Pyth Network price feeds are validated on-chain
+         | Bob executes 5x Short.                   | with strict confidence bounds under 20 basis
+         |                                          | points and maximum staleness under 25 seconds."
+----------------------------------------------------------------------------------------
+01:00 -  | [Price tick simulates SOL moving up].    | "SOL spikes upward. Alice closes her position
+01:25    | Terminal outputs: Alice realized profit  | at profit. Our fixed-point 64.64 math engine
+         | calculated with zero-copy precision.     | computes the delta with zero floating-point
+         | Compute Units consumed: only 28,870 CU.  | overhead, consuming under 29,000 Compute Units—
+         |                                          | well under Solana's standard limits."
+----------------------------------------------------------------------------------------
+01:25 -  | [Clock expires. Autonomous Keeper bot    | "When the round ends, our permissionless crank
+01:45    | triggers `finalize_round` in 1 slot].    | takes over. Any keeper can call `finalize_round`
+         | Escrow distributes 0.25% incentive fee   | to claim a protocol-funded incentive fee,
+         | to keeper; round transitions to Settled. | moving the round to Settled without manual
+         |                                          | admin intervention or custodial risk."
+----------------------------------------------------------------------------------------
+01:45 -  | [Alice calls `claim_prize(1)`].          | "Alice claims her 1st place prize—instantly
+02:00    | SPL tokens stream to Alice's wallet.     | receiving 50% of the tournament prize pool.
+         | Reentrancy & double-claim security checks| Fully decentralized, mathematically sound,
+         | flash green on UI audit panel.           | and battle-tested for high-volume leagues.
+         | Closing Slide: KriptoK League Wins #1.   | This is KriptoK League: built for speed,
+         |                                          | fairness, and the next million on-chain traders."
+========================================================================================

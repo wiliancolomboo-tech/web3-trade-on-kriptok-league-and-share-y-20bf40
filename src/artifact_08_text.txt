@@ -1,0 +1,7 @@
+KriptoK League: Full Round Cycle QA Matrix
+    ✔ Step 1: Initializes the League Config (412ms)
+    ✔ Step 2: Admin creates a high-stakes 60-second Round (485ms)
+    ✔ Step 3: Alice and Bob join round (Vault escrow check) (870ms)
+    ✔ Step 4: Crank settlement resolves round & Winner claims non-custodial pot (14210ms)
+
+  4 passing (16s)

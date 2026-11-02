@@ -1,0 +1,58 @@
+flowchart TD
+    subgraph Client & Automation Layer
+        Trader[Trader / Web3 Wallet]
+        Keeper[Automated Keeper / Crank Bot]
+        OracleNode[Pyth Price Service / Hermes]
+    end
+
+    subgraph Solana Program Layer [KriptoK League Program: kLeag...]
+        subgraph State Machine Engine
+            StateControl{Round State}
+            StateControl -->|Clock < Start| Scheduled[Scheduled State]
+            StateControl -->|Start <= Clock < Lock| Open[Open / Trading Window]
+            StateControl -->|Lock <= Clock < End| Locked[Locked / Price Observation]
+            StateControl -->|Clock >= End| Settled[Settled / Prize Ready]
+        end
+
+        subgraph Instruction Processors
+            IX_Init[initialize_league]
+            IX_Create[create_round]
+            IX_Enter[enter_round]
+            IX_Trade[execute_trade]
+            IX_Settle[settle_round]
+            IX_Claim[claim_reward]
+        end
+
+        subgraph Security & Verification Guards
+            SignerCheck[Signer Verification]
+            StalenessCheck[Pyth Staleness Guard: max_age <= 30s]
+            ConfidenceCheck[Pyth Confidence Bounds: conf/price <= 20bps]
+            BoundsCheck[Leverage & Margin Invariant Guard]
+            VaultGuard[Canonical PDA Bump Validation]
+        end
+    end
+
+    subgraph Solana Storage & External PDAs
+        LeagueConfigPDA[(League Config PDA)]
+        RoundPDA[(Round Account PDA)]
+        PositionPDA[(Trader Position PDA)]
+        LeaderboardPDA[(Zero-Copy Leaderboard PDA)]
+        VaultTokenPDA[(Round USDC Vault PDA)]
+        PythSOLFeed[(Pyth SOL/USD Price Feed)]
+    end
+
+    Trader -->|1. Deposit Collateral & Join| IX_Enter
+    Trader -->|2. Long/Short Allocation| IX_Trade
+    Keeper -->|3. Crank State Transition| IX_Settle
+    Trader -->|4. Claim Yield & PnL| IX_Claim
+
+    IX_Enter --> VaultGuard & SignerCheck
+    IX_Trade --> BoundsCheck & StateControl
+    IX_Settle --> StalenessCheck & ConfidenceCheck
+
+    ConfidenceCheck -.->|Verify CPI / Read| PythSOLFeed
+    VaultGuard --> VaultTokenPDA
+    BoundsCheck --> PositionPDA
+    StateControl --> RoundPDA
+    IX_Init --> LeagueConfigPDA
+    IX_Settle --> LeaderboardPDA

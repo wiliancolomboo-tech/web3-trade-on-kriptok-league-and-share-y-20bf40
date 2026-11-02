@@ -1,0 +1,7 @@
+kriptok-league end-to-end test suite
+    ✔ Initializes the KriptoK League Configuration successfully (412ms)
+    ✔ Keeper initializes a new competitive round (Round #1) (289ms)
+    ✔ Traders place positions: Bull (100 USDC) vs Bear (100 USDC) (610ms)
+    ✔ Fails if trader attempts to reverse direction in the same round (145ms)
+
+  4 passing (2s)

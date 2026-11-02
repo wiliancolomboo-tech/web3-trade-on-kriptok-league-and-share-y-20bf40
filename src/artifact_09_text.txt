@@ -1,0 +1,8 @@
+KriptoK League: Full Protocol Lifecycle
+    ✔ 1. Initializes League Protocol Global Config (412ms)
+    ✔ 2. Creates a New League Tournament Round (385ms)
+    ✔ 3. Alice and Bob Enter Round (Staking Escrow Validated) (620ms)
+    ✔ 4. Prevents Early Position Opening Before Start Timestamp (120ms)
+    ✔ 5. Finalizes Round post-expiry and claims prize for Alice (6210ms)
+
+  5 passing (7.85s)

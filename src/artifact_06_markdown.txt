@@ -1,0 +1,36 @@
+================================================================================
+TIME        VISUAL                                AUDIO NARRATIVE (SPOKEN)
+================================================================================
+0:00-0:15   [Screen: Title Card & Mermaid Flow]   "Welcome to our KriptoK League Production
+            Highlighting KriptoK League on-chain   submission: The Automated League Execution 
+            architecture, PDAs, and Pyth feed.     Engine and Strategy Bot. In fast-paced Solana
+                                                  trading leagues, latency is the difference between
+                                                  claiming the pool and suffering total drawdown."
+
+0:15-0:30   [Screen: VS Code - lib.rs]            "We built an industrial-grade Anchor engine
+            Highlighting checked arithmetic and    featuring deterministic state rounds, zero-copy
+            checks-effects-interactions on claim.  Pyth pull-oracle validation, and strict lock 
+                                                  windows that completely eliminate toxic arbitrage
+                                                  and flash-loan manipulation."
+
+0:30-0:55   [Screen: Terminal split screen]       "Let's launch a live 60-second round. Watch the
+            Left: anchor test output.             terminal: The contract binds our start price from
+            Right: Solana Explorer on Localnet.   the Pyth SOL/USD feed, opens our PDA token vault,
+                                                  and locks trader collateral under verifiable PDA seeds."
+
+0:55-1:20   [Screen: Bot execution terminal]      "Now, our autonomous keeper bot takes over. It
+            Showing scripts/keeper-bot.ts         computes momentum deltas across millisecond ticks,
+            streaming slot updates and placing    snipes a LONG position before the lock window, 
+            a Long order at Block 0.              and monitors the expiration slot."
+
+1:20-1:45   [Screen: Settlement & Event logs]     "Round expires! The bot fires an atomic 
+            RoundSettled event emitted;           settle_round CPI. The Pyth price update attests
+            payout calculated; claim completed.   a 42-basis-point upward tick. Long pool wins.
+                                                  Within the same second, claim_winnings executes,
+                                                  extracting the pool payout straight to our wallet!"
+
+1:45-2:00   [Screen: Test Matrix & CU table]      "With every transaction executing under 35,000 CUs,
+            Showing 100% green Anchor tests and   fully audited PDA ownership guards, and zero human
+            sub-35k Compute Unit stats.           latency, this engine represents the gold standard for
+                                                  competing on KriptoK League. Thank you!"
+================================================================================

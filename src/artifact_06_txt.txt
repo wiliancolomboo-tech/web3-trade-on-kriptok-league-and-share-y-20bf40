@@ -1,15 +1,21 @@
-+------------------------------------+-------------------------------------------+-------------------------------------------------------------+
-| Threat Vector                      | Severity                                  | Production Mitigation Mechanism                             |
-+------------------------------------+-------------------------------------------+-------------------------------------------------------------+
-| Oracle Front-Running               | Critical                                  | Lock window enforces zero new entries after lock_time;      |
-|                                    |                                           | Pyth staleness check restricts resolution to < 30s.         |
-| Pyth Confidence Exploit            | High                                      | Validates (conf * 10,000 / price) <= 50 bps;                |
-|                                    |                                           | wide/uncertain spreads abort settlement to prevent bad data.|
-| PDA Seed Impersonation             | Critical                                  | Canonical seeds: [b"position", round_id, trader.key()];     |
-|                                    |                                           | Prevents malicious third-party claims or fund theft.        |
-| Reentrancy / Double Claiming       | Critical                                  | Checks-Effects-Interactions pattern:                        |
-|                                    |                                           | position.claimed = true BEFORE CPI token transfer.          |
-| Round Drain / Overdrawn Pool       | High                                      | Integer math (u128) checks prevents overflow;               |
-|                                    |                                           | Winnings strictly proportional to losing pool balance.      |
-| Stale Token Accounts               | Medium                                    | Mint & owner constraints strictly validated on all ATAs.    |
-+------------------------------------+-------------------------------------------+-------------------------------------------------------------+
++-----------------------------+---------------------------------------+-------------------------------------------------------+
+| Threat Vector               | Vulnerability Surface                 | Protocol Mitigation & Anchor Guard                    |
++-----------------------------+---------------------------------------+-------------------------------------------------------+
+| Reentrancy Attacks          | Malicious CPI re-entering during claim| Strict CEI pattern: position.claimed = true set BEFORE|
+|                             |                                       | SPL Token transfer CPI invocation.                    |
++-----------------------------+---------------------------------------+-------------------------------------------------------+
+| Stale Oracle Frontrunning   | Trader bets when real-world price has | Round checks: Clock::get()?.unix_timestamp < lock_time|
+|                             | moved ahead of oracle update          | and Pyth max staleness threshold fixed at <= 60s.     |
++-----------------------------+---------------------------------------+-------------------------------------------------------+
+| Integer Overflow / Truncate | Extreme pool stakes causing payout    | All mathematical computations promoted to u128 with   |
+|                             | overflow or zero-division panic       | checked_add/mul/div; explicit winning pool != 0 check.|
++-----------------------------+---------------------------------------+-------------------------------------------------------+
+| Unauthorized Drain          | Forged vault withdrawals              | Vault token authority is locked to a derived PDA seed |
+|                             |                                       | with dynamic bump check (signer_seeds enforcement).   |
++-----------------------------+---------------------------------------+-------------------------------------------------------+
+| Double Spend / Double Claim | Trader claims winning ticket twice    | Position PDA marked with `claimed: bool = true`;      |
+|                             | in same or adjacent slots             | enforced via `require!(!position.claimed)`.           |
++-----------------------------+---------------------------------------+-------------------------------------------------------+
+| Fake Oracle Impersonation   | Attacker passes dummy oracle account  | Round stores exact Pyth Feed Pubkey at initiation;    |
+|                             | returning arbitrary price outcomes    | resolve_round validates `pyth_price_feed.key() == id`|
++-----------------------------+---------------------------------------+-------------------------------------------------------+

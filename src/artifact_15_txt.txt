@@ -1,0 +1,20 @@
+┌────────────────────────┬───────────────────────────────────────────┬──────────────────────────────────────────────┐
+│ Vector / Vulnerability │ Risk Level / Impact                       │ Hardened Mitigation Strategy                 │
+├────────────────────────┼───────────────────────────────────────────┼──────────────────────────────────────────────┤
+│ Oracle Latency / MEV   │ HIGH: Front-running round end via         │ Strict Lock Slot enforcement                 │
+│ Sandwiching            │ pending price updates                     │ (Clock::get()?.slot < round.lock_slot).      │
+│                        │                                           │ Trades rejected during the lock period.      │
+├────────────────────────┼───────────────────────────────────────────┼──────────────────────────────────────────────┤
+│ Stale Oracle Price     │ HIGH: Arbitrage against off-chain         │ Strict Pyth verification via                 │
+│ Exploitation           │ delta prices                              │ `get_price_no_older_than(30s)` and conf      │
+│                        │                                           │ spread cap `(conf / price <= 1.0%)`.         │
+├────────────────────────┼───────────────────────────────────────────┼──────────────────────────────────────────────┤
+│ PDA Seed Collision     │ CRITICAL: Malicious hijacking of round    │ Canonical seed binding with LE 8-byte array  │
+│                        │ collateral escrows                        │ `round_id.to_le_bytes()` and bump storage.   │
+├────────────────────────┼───────────────────────────────────────────┼──────────────────────────────────────────────┤
+│ Arithmetic Overflow    │ CRITICAL: Total pool drain or balance     │ Rust `checked_add`, `checked_mul`,           │
+│ & Precision Loss       │ truncation                                │ `checked_div` using 128-bit promotion.       │
+├────────────────────────┼───────────────────────────────────────────┼──────────────────────────────────────────────┤
+│ Rent Exemption / State │ MEDIUM: Permanent ledger bloat & rent     │ `claim_payout` closes position PDA via       │
+│ Exhaustion             │ lockup                                    │ `close = trader`, returning lamports.        │
+└────────────────────────┴───────────────────────────────────────────┴──────────────────────────────────────────────┘

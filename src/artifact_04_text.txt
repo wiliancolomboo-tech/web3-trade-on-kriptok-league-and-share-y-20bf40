@@ -1,0 +1,47 @@
+[00:00 - 00:20] THE PROBLEM & CONTEXT
+Visual:
+- Quick camera shot / screen share of KriptoK League interface.
+- Highlight the friction of latency, round settlement delays, and oracle front-running.
+Audio:
+"Decentralized trading leagues on Solana demand sub-second responsiveness, absolute oracle fairness,
+and instantaneous settlement. When rounds conclude, players should not have to wait for manual admins
+or centralized multi-sig operations. Today, we present the production-ready KriptoK League Round Engine
+and Autonomous Crank Bot."
+
+[00:20 - 00:50] ARCHITECTURE & PROTOCOL CRANK
+Visual:
+- Terminal launches local validator.
+- Run test harness showing `initialize_league` and `open_round`.
+- Highlight deterministic PDA derivations: League, Round, and Escrow Vault.
+Audio:
+"Our architecture leverages dual-PDA isolation. We decouple round state from global leagues, meaning
+infinite concurrent matches can run simultaneously. Oracle validation uses Pyth's high-frequency price feeds,
+with on-chain staleness checks capped at 30 seconds. Plus, settlement is completely autonomous: any keeper
+who triggers `settle_round` receives an immediate 50 basis point crank rebate."
+
+[00:50 - 01:25] LIVE ROUND TRADING EXPERIENCE
+Visual:
+- Split screen: Trader 1 stakes 300 USDC (Long), Trader 2 stakes 100 USDC (Short).
+- Show SPL Token transfers routing cleanly into PDA vault without balance leakage.
+- Fast-forward slot progression; Keeper bot triggers `settle_round`.
+Audio:
+"Here, Trader A goes Long on SOL/USD, and Trader B goes Short. The funds lock atomically into a PDA-controlled
+vault. Notice the entry window cutoff guarding against latency arbitrage. Once the epoch concludes, our keeper
+detects the slot boundary, pings the oracle, and settles the round in under 40,000 compute units. Trader A wins,
+receiving their pro-rata pari-mutuel payout directly on-chain."
+
+[01:25 - 01:50] SECURITY, GAS BENCHMARKS & RELIABILITY
+Visual:
+- Show Anchor test suite passing with 100% green checkmarks.
+- Display CU Profiler: under 40k CU per execution.
+Audio:
+"We strictly adhere to the Checks-Effects-Interactions pattern: accounts are marked claimed before tokens leave
+the vault, eliminating reentrancy vulnerabilities. All math utilizes checked arithmetic with zero floating-point
+rounding errors, maintaining accounting integrity under extreme volume."
+
+[01:50 - 02:00] THE CLOSE
+Visual:
+- Summary slide with GitHub repo, deployment address, and audit summary.
+Audio:
+"Battle-tested, compute-optimized, and built specifically for the speed of Solana. This is the competitive
+trading engine KriptoK League needs. Thank you!"

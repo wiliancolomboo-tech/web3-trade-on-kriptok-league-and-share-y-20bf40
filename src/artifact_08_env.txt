@@ -1,0 +1,4 @@
+ANCHOR_PROVIDER_URL=https://api.devnet.solana.com
+ANCHOR_WALLET=~/.config/solana/id.json
+PROGRAM_ID=Kr1pt0kLeague11111111111111111111111111111111
+PYTH_SOL_USD_FEED=J83w4HKfqxwcq3BEMMkPFSppX3gqekLyLJBexebFVkho

@@ -1,0 +1,21 @@
+{
+  "roundId": "101",
+  "entryTimestamp": 1718029200142,
+  "exitTimestamp": 1718029235912,
+  "entryPriceUsd": 152.45,
+  "settlementPriceUsd": 154.12,
+  "direction": "Long",
+  "stakeLamports": 500000000,
+  "payoutLamports": 945200000,
+  "netPnlLamports": 445200000,
+  "pnlPercent": 89.04,
+  "transactionSignatures": {
+    "entryTx": "5Uv2Z...8PqL",
+    "settleTx": "3Jn9X...4KdM",
+    "claimTx": "2Wk7B...9NxP"
+  },
+  "latencyMetrics": {
+    "oracleLatencyMs": 142,
+    "roundParticipationLagSlots": 1
+  }
+}

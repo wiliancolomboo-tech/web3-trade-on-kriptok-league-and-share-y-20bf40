@@ -1,0 +1,15 @@
+### KriptoK League Round Experience Review
+- **Trader Public Key**: `7aV5qN...3kR8`
+- **Round Number**: `1001` (SOL/USD 60-Second Blitz)
+- **Position Chosen**: `LONG` (Collateral: 100 USDC)
+- **Strike Oracle Price**: `$182.45000000`
+- **Settlement Oracle Price**: `$183.12500000`
+- **Round Outcome**: `WON` (+88.2% Net Yield after 1% Protocol Fee)
+- **Observed Round Latency**: 418.5 ms from trigger to confirmation
+- **UX Score**: 5/5 Stars
+
+#### Detailed Experience Reflections:
+1. **Speed & Finality**: Committing liquidity to KriptoK League via Anchor PDAs is exceptionally seamless. The transaction was confirmed within a single block confirmation window.
+2. **Oracle Reliability**: Leveraging Pyth with strict confidence interval checking (`conf / price <= 0.02`) prevented entry during abnormal spread divergence, protecting our collateral from flash-wick liquidations.
+3. **Settlement Transparency**: The dual-crank architecture (`lock_strike_price` -> `settle_round`) guarantees that no participant or operator can retroactively alter the baseline strike price.
+4. **Conclusion**: KriptoK League provides an intuitive, high-octane trading framework. Coupling it with this automated Anchor agent unlocks institutional-grade execution speed for retail-focused gamified markets.

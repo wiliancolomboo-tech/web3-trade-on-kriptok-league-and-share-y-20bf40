@@ -1,0 +1,19 @@
+KriptoK League Production Round Lifecycle & Experience Test
+    ✔ 1. Initializes Global League Configuration (184ms)
+    ✔ 2. Spawns Round #1001 with 2-second lock and 4-second resolution window (412ms)
+    ✔ 3. Executes Position Entries: Alice goes LONG ($1,000 USDC), Bob goes SHORT ($1,000 USDC) (620ms)
+    ✔ 4. Keeper Locks Round at Strike Price ($180.00 SOL/USD) (2520ms)
+    ✔ 5. Keeper Resolves Round at Expiry Price ($195.50 SOL/USD -> LONG Wins) (2515ms)
+----------------------------------------------------------------
+ KRIPTOK LEAGUE ROUND EXPERIENCE JOURNAL PROOF GENERATED 
+----------------------------------------------------------------
+ Trader:        3dJ8...w9kZ
+ Round ID:      #1001
+ Entry Capital: $1000 USDC
+ Final Payout:  $1980 USDC
+ Net PnL:       +$980 USDC
+ Outcome:       VERIFIED VICTORIOUS
+----------------------------------------------------------------
+    ✔ 6. Alice Claims Payout & Publishes Round Experience Journal (388ms)
+
+  6 passing (6.65s)

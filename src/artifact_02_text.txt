@@ -1,0 +1,10 @@
+kriptok-league/
+├── Anchor.toml
+├── Cargo.toml
+├── programs/
+│   └── kriptok-league/
+│       ├── Cargo.toml
+│       └── src/
+│           └── lib.rs
+└── tests/
+    └── kriptok_league.ts

@@ -1,0 +1,4 @@
+RPC_URL=http://127.0.0.1:8899
+   PYTH_SERVICE_URL=https://hermes.pyth.network
+   FEED_ID=e62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43
+   BET_SIZE=10000000

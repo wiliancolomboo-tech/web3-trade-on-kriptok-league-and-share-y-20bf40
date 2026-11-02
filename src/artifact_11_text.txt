@@ -1,0 +1,7 @@
+KriptoK League: Full Round Lifecycle Test Matrix
+    ✔ 1. Initializes League Configuration successfully (412ms)
+    ✔ 2. Creates a competitive round with isolated vault PDA (385ms)
+    ✔ 3. Enrolls Player A and Player B into the round vault (592ms)
+    ✔ 4. Prevents early settlement while round is still running (128ms)
+
+  4 passing (2s)

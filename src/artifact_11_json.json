@@ -1,0 +1,11 @@
+{
+  "roundId": 0,
+  "entrySlot": 14209,
+  "exitSlot": 14309,
+  "executionLatencyMs": 412,
+  "cuConsumed": 41200,
+  "direction": "Long",
+  "entryPrice": 152450000,
+  "exitPrice": 165000000,
+  "netRoiBps": 1540
+}

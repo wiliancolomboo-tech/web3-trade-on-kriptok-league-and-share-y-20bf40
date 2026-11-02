@@ -1,0 +1,8 @@
+KriptoK League: End-to-End Test Suite
+    ✔ 1. Initializes League with 3% fee structure (142ms)
+    ✔ 2. Launches Round 1 with Oracle integration (215ms)
+    ✔ 3. Traders enter Bull (100 USDC) and Bear (100 USDC) positions (389ms)
+    ✔ 4. Locks and resolves Round with Long as winner ($160.00 closing) (5621ms)
+    ✔ 5. Bull trader claims rewards and Bear claim is rejected (198ms)
+
+  5 passing (6.6s)

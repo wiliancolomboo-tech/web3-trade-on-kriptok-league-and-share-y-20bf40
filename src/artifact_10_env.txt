@@ -1,0 +1,4 @@
+RPC_URL="https://api.devnet.solana.com"
+LEAGUE_ID="42"
+KEYPAIR_PATH="~/.config/solana/id.json"
+PYTH_FEED_PDA="rec5EKMGg6vTXrBenTCrvZQW2Kc1cvTP5VnGLDeKHSr"

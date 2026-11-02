@@ -1,0 +1,9 @@
+kriptok-league-lifecycle
+    ✔ Initializes the KriptoK League Configuration (182ms)
+    ✔ Enters Positions: Long vs Short Parimutuel Stakes (340ms)
+    ✔ Rejects late entry after lock_slot has elapsed (45ms)
+    ✔ Rejects settlement attempt before resolve_slot (39ms)
+    ✔ Successfully settles round with Pyth oracle verification (210ms)
+    ✔ Claims winning payout and burns/closes PDA account (195ms)
+
+  6 passing (1.2s)

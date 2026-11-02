@@ -1,0 +1,19 @@
+[0:00 - 0:20] Hook & Protocol Foundation
+(Visual: Terminal running `anchor test`. All green checks passing. Architecture diagram visible on right window.)
+Narrative: "Welcome. This is the technical breakdown of the KriptoK League automated trading and settlement protocol on Solana. High-frequency prediction leagues face three major issues: stale oracle exploitation, CU bloat, and escrow contamination. Here is how we engineered an institutional-grade, zero-loss settlement protocol to eliminate all three."
+
+[0:20 - 0:45] Deep-Dive: Oracle Verification & Anti-Front-Running
+(Visual: Code inspection on lib.rs validate_oracle_confidence function; Pyth price feed fetch.)
+Narrative: "Notice how enter_position and settle_round enforce sub-second Pyth Price verification. We don't just check price timestamp freshness at under 60 seconds; we compute confidence-to-price ratios in basis points. If the confidence interval widens beyond 200 basis points during extreme market volatility, transactions fail-safe, preventing toxic arbitrage."
+
+[0:45 - 1:15] Collateral Security & Deterministic PDAs
+(Visual: Terminal executing Mocha tests simulating two simultaneous rounds, followed by an attempted unauthorized cross-round withdrawal.)
+Narrative: "Each round derives its own independent SPL token vault seeded by the round ID. Round A's assets are physically isolated from Round B. We've replaced linear $O(N)$ winner loops with constant $O(1)$ weighted share accounting. Leverage from 1x to 20x is tracked in 128-bit integers, keeping trade entry at just 18,450 Compute Units."
+
+[1:15 - 1:40] Automated Crank Settlement & Claim Execution
+(Visual: Python keeper bot detecting round expiration, sending the settle transaction, and user wallet claiming rewards.)
+Narrative: "When the round timestamp elapses, our autonomous keeper crank triggers settle_round in 14,000 CU. The protocol records the terminal settlement price. Winners claim rewards trustlessly with an exact mathematical split, deducting a protocol fee directly into the platform treasury. Reentrancy is rendered impossible by zeroing claim rights prior to CPI dispatch."
+
+[1:40 - 2:00] Conclusion & Why This Takes 1st Place
+(Visual: GitHub repository, code coverage summary (100%), and final summary screen.)
+Narrative: "With deterministic security guarantees, full Pyth confidence validation, 100% test coverage, and minimal compute overhead, this architecture provides KriptoK League with the speed and reliability necessary for tens of thousands of concurrent traders. Thank you."

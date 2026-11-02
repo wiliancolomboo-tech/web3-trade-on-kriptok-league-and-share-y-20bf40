@@ -1,0 +1,22 @@
++------------------------------------+------------------------------------+---------------------------------------+
+| Threat Vector                      | Severity Level                     | Implemented Protocol Defensive Shield |
++------------------------------------+------------------------------------+---------------------------------------+
+| Latency Front-Running / Oracle     | CRITICAL                           | Strict check: Price publish_time must |
+| Stale Price Abuse                  |                                    | be <= 60s old. Max confidence window  |
+|                                    |                                    | bound to conf * 10,000 / price <= 50  |
++------------------------------------+------------------------------------+---------------------------------------+
+| Integer Arithmetic Overflow /      | HIGH                               | Strict usage of checked_add,          |
+| Rounding Bias                      |                                    | checked_sub, checked_mul, checked_div |
+|                                    |                                    | with 128-bit fixed-point scalars.     |
++------------------------------------+------------------------------------+---------------------------------------+
+| Double-Claim / Reentrancy on       | CRITICAL                           | Checks-Effects-Interactions (CEI):    |
+| Tournament Prize Vault             |                                    | `claimed = true` written to state     |
+|                                    |                                    | BEFORE token transfer CPI is invoked. |
++------------------------------------+------------------------------------+---------------------------------------+
+| PDA Seed Collision / Account       | HIGH                               | Explicit canonical PDA bump seeding   |
+| Substitution Attacks               |                                    | enforced via Anchor `seeds = [...]`   |
+|                                    |                                    | and `bump = config.bump` constraints. |
++------------------------------------+------------------------------------+---------------------------------------+
+| Premature Round Settlement         | MEDIUM                             | Slot verification check prevents      |
+| Griefing                           |                                    | settlement before `round.end_slot`.   |
++------------------------------------+------------------------------------+---------------------------------------+

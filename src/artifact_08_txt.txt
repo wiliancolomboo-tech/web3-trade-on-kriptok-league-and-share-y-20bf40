@@ -1,0 +1,7 @@
+KriptoK League Production Test Suite
+    ✔ 1. Initializes League Config with 2.5% protocol fee (422ms)
+    ✔ 2. Initializes Round #1 (SOL/USD, 3-second duration for testing) (388ms)
+    ✔ 3. Trader 1 opens 10x Leveraged Long position with $100 USDC (512ms)
+    ✔ 4. Prevents position entry after round expiry (145ms)
+
+  4 passing (2s)

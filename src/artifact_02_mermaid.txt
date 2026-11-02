@@ -1,42 +1,69 @@
 flowchart TD
-    subgraph ClientAndKeepers["Client & Autonomous Keepers"]
-        Trader["Algorithmic Trading Bot<br/>(KriptoK-Sentinel)"]
-        Crank["Settlement Crank Keeper"]
+    subgraph ClientLayer [Client & Keeper Infrastructure]
+        Admin[League Admin / Deployer]
+        Trader[League Trader / User]
+        Keeper[Automated Resolution Crank]
     end
 
-    subgraph OracleNetwork["Oracle Layer"]
-        PythOracle["Pyth Price Feed<br/>(SOL/USD Feed Account)"]
+    subgraph ProgramLayer [Solana Anchor Program: KriptoK League]
+        subgraph AccountsAndPDAs [Account PDAs & Vaults]
+            ConfigPDA[("League Config PDA<br/>['league', league_id]")]
+            RoundPDA[("Round PDA<br/>['round', league_id, round_id]")]
+            VaultPDA[("Round Vault Token PDA<br/>['vault', round_id]")]
+            PositionPDA[("User Position PDA<br/>['position', round_id, user_pubkey]")]
+        end
+
+        subgraph Instructions [Instruction Pipeline]
+            IxInit[initialize_league]
+            IxStart[start_round]
+            IxTrade[enter_position]
+            IxLock[lock_round]
+            IxResolve[resolve_round]
+            IxClaim[claim_reward]
+        end
+
+        subgraph ExternalPrograms [External CPI Targets & Oracles]
+            TokenProg[SPL Token Program]
+            PythOracle[Pyth Network Price Feed]
+        end
     end
 
-    subgraph SolanaOnChain["Solana On-Chain: KriptoK Anchor Protocol"]
-        ConfigAccount["Global Config PDA<br/>seeds=['config']<br/>- Admin Pubkey<br/>- Fee Basis Points<br/>- Min/Max Stake"]
-        RoundPDA["League Round PDA<br/>seeds=['round', round_id]<br/>- Round ID & Status<br/>- Start/Lock/End Timestamps<br/>- Strike & Resolution Prices<br/>- Bull / Bear Pool Vault Totals"]
-        UserPositionPDA["User Position PDA<br/>seeds=['position', round_id, trader]<br/>- Direction (Bull/Bear)<br/>- Amount Staked<br/>- Claimed Flag"]
-        RoundVaultPDA["Round Vault ATA / Escrow<br/>seeds=['vault', round_id]<br/>- Holds Staked USDC Liquidity"]
-    end
+    %% State Transitions and Invocations
+    Admin -->|1. Setup Rules & Fee| IxInit
+    IxInit -->|Initializes| ConfigPDA
 
-    subgraph SPLToken["SPL Token Engine"]
-        UserATA["Trader USDC ATA"]
-        TreasuryATA["Protocol Fee Treasury ATA"]
-    end
+    Keeper -->|2. Open Epoch| IxStart
+    IxStart -->|Reads Baseline Price| PythOracle
+    IxStart -->|Initializes State| RoundPDA
+    IxStart -->|Derives Escrow| VaultPDA
 
-    %% Flow Steps
-    Trader -->|"1. Ingest Price & Signal"| PythOracle
-    Trader -->|"2. enter_round(Bull/Bear, Stake)"| UserPositionPDA
-    Trader -->|"CPI: Transfer Stake"| RoundVaultPDA
-    UserATA -.->|"Debit USDC"| RoundVaultPDA
+    Trader -->|3. Deposit Collateral & Choose Long/Short| IxTrade
+    IxTrade -->|CPI: Transfer Tokens| TokenProg
+    TokenProg -->|Funds Deposited| VaultPDA
+    IxTrade -->|Allocates Ticket & Tracks Weight| PositionPDA
+    IxTrade -->|Updates Total Pools| RoundPDA
 
-    Crank -->|"3. lock_round()"| RoundPDA
-    Crank -->|"4. settle_round(pyth_feed)"| RoundPDA
-    PythOracle -.->|"Validate Timestamp & Conf"| RoundPDA
+    Keeper -->|4. Epoch Expiration: Lock Entry| IxLock
+    IxLock -->|RoundState::Locked| RoundPDA
 
-    RoundPDA -->|"5. claim_winnings()"| UserPositionPDA
-    RoundVaultPDA -.->|"Credit Principal + Pro-Rata Yield"| UserATA
-    RoundVaultPDA -.->|"Protocol Fee Deductions"| TreasuryATA
+    Keeper -->|5. Resolution Clock Triggered| IxResolve
+    IxResolve -->|Fetch Final Price + Staleness Check| PythOracle
+    IxResolve -->|Computes Outcome: Bull/Bear/Tie| RoundPDA
+    IxResolve -->|RoundState::Resolved| RoundPDA
 
-    classDef pda fill:#1e1e2f,stroke:#7c3aed,stroke-width:2px,color:#fff;
-    classDef client fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#fff;
-    classDef oracle fill:#022c22,stroke:#10b981,stroke-width:2px,color:#fff;
-    class RoundPDA,ConfigAccount,UserPositionPDA,RoundVaultPDA pda;
-    class Trader,Crank client;
-    class PythOracle oracle;
+    Trader -->|6. Redeem Winnings| IxClaim
+    PositionPDA -.->|Validates Stake & Winning Side| IxClaim
+    RoundPDA -.->|Checks Resolved State| IxClaim
+    IxClaim -->|CPI: Transfer Winnings via PDA Seeds| TokenProg
+    TokenProg -->|Disburses Reward| Trader
+    IxClaim -->|Sets position.claimed = true| PositionPDA
+
+    classDef admin fill:#1E293B,stroke:#0EA5E9,stroke-width:2px,color:#fff;
+    classDef trader fill:#0F172A,stroke:#10B981,stroke-width:2px,color:#fff;
+    classDef pda fill:#312E81,stroke:#6366F1,stroke-width:2px,color:#fff;
+    classDef external fill:#451A03,stroke:#F59E0B,stroke-width:2px,color:#fff;
+
+    class Admin,Keeper admin;
+    class Trader trader;
+    class ConfigPDA,RoundPDA,VaultPDA,PositionPDA pda;
+    class TokenProg,PythOracle external;

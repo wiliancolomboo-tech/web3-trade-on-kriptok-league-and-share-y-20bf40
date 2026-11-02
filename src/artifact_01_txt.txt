@@ -1,10 +1,9 @@
-+---------------------------------------------------------------------------------------------------+
-|                                  KRIPTOK-SENTINEL-v1 VALUE PROP                                   |
-+------------------------------------+----------------------------------+---------------------------+
-| Metric                             | Manual Retail Execution          | KriptoK-Sentinel Pipeline |
-+------------------------------------+----------------------------------+---------------------------+
-| Execution Latency                  | 2,500 ms – 5,000 ms              | < 450 ms (Priority Fees)  |
-| Stale Oracle / Slippage Protection | None (Vulnerable to lag)         | Sub-slot Pyth Conf Checks |
-| Bankroll Management                | Arbitrary / Martingale           | Fractional Kelly Criterion|
-| Settlement Efficiency              | Manual claim execution           | Automated Crank Execution |
-+------------------------------------+----------------------------------+---------------------------+
++-----------------------------------+---------------------------------------------------------+
+| Protocol Metric                   | Architectural Guarantee                                 |
++-----------------------------------+---------------------------------------------------------+
+| Settlement Finality               | 1 Solana Slot (~400 ms) post-Pyth Price Publication     |
+| Average Execution Cost            | ~28,400 Compute Units (CU) per user trade entry         |
+| Security Invariant                | Zero custody risk; 100% PDA-escrowed isolated vaults    |
+| Oracle Liveness & Staleness Guard | Pyth EMA Price feed with strict max 60-second threshold |
+| Anti-Frontrunning Architecture    | Lock Epoch enforces trade cutoffs before oracle expiry  |
++-----------------------------------+---------------------------------------------------------+

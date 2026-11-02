@@ -1,0 +1,22 @@
+{
+  "league": "KriptoK League Solana Epoch Bracket #1",
+  "trader": "9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM",
+  "totalRoundsTraded": 1,
+  "averageLatencyMs": 382.0,
+  "logs": [
+    {
+      "roundId": 1,
+      "entryTimestamp": 1715846400,
+      "direction": "Bull",
+      "collateralAmount": 50.0,
+      "txSignature": "4nK9F2jXw8rBqmX7VzPqL2dM1...3k8Y",
+      "computeUnitsUsed": 54320,
+      "entryPriceUsd": 142.85,
+      "roundStatus": "SettledBullWon",
+      "payoutAmount": 98.0,
+      "netPnL": 48.0,
+      "roundExperienceRating": "Exceptional / Sub-400ms Confirmation",
+      "latencyMs": 382
+    }
+  ]
+}

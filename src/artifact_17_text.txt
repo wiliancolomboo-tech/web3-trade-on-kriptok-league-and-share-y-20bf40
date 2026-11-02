@@ -1,0 +1,8 @@
+✔ 1. Initializes League Config with exact fee bounds (184ms, 15,210 CU)
+✔ 2. Fails to initialize round with invalid duration (112ms, expected revert)
+✔ 3. Successfully enters Long and Short directional trades (320ms, 24,612 CU)
+✔ 4. Prevents duplicate trade entries on the same round ticket PDA (95ms, expected revert)
+✔ 5. Settles round and disburses keeper fee accurately (210ms, 37,120 CU)
+✔ 6. Disburses proportional collateral and winning rewards (165ms, 22,890 CU)
+
+6 passing (2.4s)

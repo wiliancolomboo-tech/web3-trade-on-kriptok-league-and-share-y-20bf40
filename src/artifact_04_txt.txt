@@ -1,0 +1,18 @@
++---------------------------+-----------------------------------+--------------------------------------------+
+| Attack Vector             | Vulnerability Type                | KriptoK Mitigation Guard                   |
++---------------------------+-----------------------------------+--------------------------------------------+
+| Oracle Front-Running      | Latency Exploitation              | Hard-locked `lock_time` offset prevents    |
+|                           |                                   | entering right before round settlement.    |
++---------------------------+-----------------------------------+--------------------------------------------+
+| Pyth Oracle Deviation     | Flash Crashes / Confidence Widening| Rejects prices where conf / price > 20 bps  |
+|                           |                                   | and clock delta > 30 seconds.              |
++---------------------------+-----------------------------------+--------------------------------------------+
+| Vault Draining / Reentrancy| Reentrancy & PDA Spoofing         | State changed before CPI transfers;        |
+|                           |                                   | token vault authority bound to round seeds.|
++---------------------------+-----------------------------------+--------------------------------------------+
+| Fixed-Point Precision Loss| Math Underflow / Zero-Division    | High-precision Q64/u128 math with checked_mul|
+|                           |                                   | and checked_div before downcasting.        |
++---------------------------+-----------------------------------+--------------------------------------------+
+| Fake Token Account Attack | Mint Substitution                 | Explicit Anchor constraint check:          |
+|                           |                                   | `participant_token.mint == vault.mint`    |
++---------------------------+-----------------------------------+--------------------------------------------+

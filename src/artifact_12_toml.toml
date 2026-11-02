@@ -1,0 +1,6 @@
+[programs.devnet]
+kriptok_league = "Kr1pTokeAgue1111111111111111111111111111111"
+
+[provider]
+cluster = "Devnet"
+wallet = "~/.config/solana/id.json"

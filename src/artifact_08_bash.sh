@@ -1,15 +1,5 @@
-# 1. Clone the repository and navigate to workspace
-git clone https://github.com/kriptok-sentinel/kriptok-league-engine.git
-cd kriptok-league-engine
-
-# 2. Install TypeScript dependencies
-npm install
-
-# 3. Synchronize program keys
-anchor keys sync
-
-# 4. Compile Anchor Rust program to BPF bytecode
-anchor build
-
-# 5. Execute full end-to-end integration and security test suite
-anchor test
+[Keeper] Lock timestamp reached -> lock_round() confirmed!
+  [Pyth Oracle] Published Final Price = $160.00 (Delta: +$10.00)
+  [Keeper] resolve_round() -> Outcome: LONG_WON | Tx: 7Qw...
+  [Claim] Trader Bull claims reward: Principal 100 USDC + 94 USDC PnL!
+  [Claim] Trader Bear rejected: PositionLost.

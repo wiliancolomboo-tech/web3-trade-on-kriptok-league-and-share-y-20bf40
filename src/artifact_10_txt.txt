@@ -1,0 +1,8 @@
+kriptok_league integration test matrix
+    ✔ 1. Initializes League Config PDA with Global Governance parameters (182ms)
+    ✔ 2. Creates a competitive Round with bounded timeframe (245ms)
+    ✔ 3. User 1 deposits 50 USDC to LONG position (312ms)
+    ✔ 4. User 2 deposits 50 USDC to SHORT position (298ms)
+    ✔ 5. Rejects position entry when round start time has passed (3110ms)
+
+  5 passing (4.2s)

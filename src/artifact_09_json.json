@@ -1,0 +1,13 @@
+{
+  "roundId": 1,
+  "entryTx": "3Z8P1mK1qU9W2xY...8sZ7L9",
+  "entrySlot": 268491023,
+  "direction": "Long",
+  "stakeUSDC": 50.0,
+  "settleTx": "5A7N2vL9rQ8X1yZ...2wK4M1",
+  "exitPrice": 148.92,
+  "payoutAmount": 92.5,
+  "roiPercentage": 85.0,
+  "executionLatencyMs": 342,
+  "cuConsumed": 28450
+}

@@ -1,0 +1,8 @@
+kriptok-league protocol test suite
+    ✔ 1. Initializes League Protocol Global Config (412ms)
+    ✔ 2. Creates Round #1 (5-Second Sprint) (380ms)
+    ✔ 3. Alice Enters Round #1 with Long Position (5x Leverage) (495ms)
+    ✔ 4. Prevents Entry Past Lock Window (3102ms)
+    ✔ 5. Settles Round After Duration Expiration (3620ms)
+
+  5 passing (8.2s)

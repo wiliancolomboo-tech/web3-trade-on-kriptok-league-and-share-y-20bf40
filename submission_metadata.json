@@ -1,0 +1,112 @@
+{
+  "deliverable_id": "superteam_bcdcfd20bf40",
+  "opportunity_id": "st-9b5747cc-1943-47b4-ba1f-bbc3f55a8cbe",
+  "platform": "SuperteamEarn",
+  "title": "Trade on KriptoK League and Share Your Round Experience | $2,000 USDC",
+  "url": "https://earn.superteam.fun/listings/bounty/kriptok-league-trading-experience-bounty",
+  "budget": "2,000 USDC",
+  "prize_amount": 2000.0,
+  "ecosystem": "Solana",
+  "github_url": "https://github.com/wiliancolomboo-tech/web3-trade-on-kriptok-league-and-share-y-20bf40",
+  "status": "ready_for_submission",
+  "validation_reports": [
+    {
+      "file": "artifact_01_txt.txt",
+      "language": "txt",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "artifact_02_mermaid.txt",
+      "language": "mermaid",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "artifact_03_rust.rs",
+      "language": "rust",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "artifact_04_typescript.ts",
+      "language": "typescript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "artifact_05_typescript.ts",
+      "language": "typescript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "artifact_06_txt.txt",
+      "language": "txt",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "artifact_07_bash.sh",
+      "language": "bash",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "artifact_08_bash.sh",
+      "language": "bash",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "artifact_09_bash.sh",
+      "language": "bash",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "artifact_10_bash.sh",
+      "language": "bash",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "artifact_11_bash.sh",
+      "language": "bash",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "artifact_12_bash.sh",
+      "language": "bash",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "artifact_13_text.txt",
+      "language": "text",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "artifact_14_bash.sh",
+      "language": "bash",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "artifact_15_bash.sh",
+      "language": "bash",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "artifact_16_bash.sh",
+      "language": "bash",
+      "valid": true,
+      "error": null
+    }
+  ],
+  "git_initialized": true,
+  "created_at": "2026-09-21 20:54:22"
+}
